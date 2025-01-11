@@ -9,6 +9,7 @@ function newProject(name) {
   }
 
   function deleteList(index) {
+    // console.log(`${todoLists[index].title} deleted`)
     todoLists.splice(index, 1);
   }
 
