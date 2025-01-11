@@ -1,8 +1,10 @@
+import { createTodoList } from "./todo-list";
+
 function newProject(name) {
   const todoLists = [];
 
   function createNewList(title, priority) {
-    const newList = { title, priority };
+    const newList = createTodoList(title, priority);
     todoLists.push(newList);
   }
 
