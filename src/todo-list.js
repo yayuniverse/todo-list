@@ -16,16 +16,16 @@ function createTodoList({
   dueDate = format(new Date(yyyy, mm, d), "EEEE, d MMMM y");
 
   //internal list state
-  const list = { title, priority, notes, dueDate, state };
+  const _list = { title, priority, notes, dueDate, state };
 
   //modification function
   function changeListProp(property, newValue) {
-    list[property] = newValue;
+    _list[property] = newValue;
   }
 
   return {
     get list() {
-      return { ...list };
+      return { ..._list };
     },
     
     changeListProp,

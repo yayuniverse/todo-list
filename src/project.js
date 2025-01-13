@@ -1,8 +1,8 @@
 import { createTodoList } from "./todo-list";
 
 function newProject(name) {
-  const _todoLists = [];
   let _name = name;
+  const _todoLists = [];
 
   function createNewList(title, priority) {
     const newList = createTodoList(title, priority);
@@ -15,19 +15,19 @@ function newProject(name) {
   }
 
   return {
-    createNewList,
-    deleteList,
-
-    get todoLists() {
-      return [..._todoLists];
-    },
-
     get name() {
       return _name;
     },
 
     set name(value) {
       this._name = value;
+    },
+
+    createNewList,
+    deleteList,
+
+    get todoLists() {
+      return [..._todoLists];
     },
   };
 }
