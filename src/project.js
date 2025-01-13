@@ -4,8 +4,8 @@ function newProject(name) {
   let _name = name;
   const _todoLists = [];
 
-  function createNewList(title, priority) {
-    const newList = createTodoList(title, priority);
+  function createList(title, priority) {
+    const newList = createTodoList( title, priority );
     _todoLists.push(newList);
   }
 
@@ -32,7 +32,7 @@ function newProject(name) {
       _name = value;
     },
 
-    createNewList,
+    createList,
     deleteList,
     cutListItem,
     pasteListItem,
