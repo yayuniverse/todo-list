@@ -14,17 +14,28 @@ function newProject(name) {
     _todoLists.splice(index, 1);
   }
 
+  function cutListItem(index) {
+    const removedTodoArray = _todoLists.splice(index, 1);
+    return removedTodoArray[0];
+  }
+
+  function pasteListItem(list) {
+    _todoLists.push(list)
+  }
+
   return {
     get name() {
       return _name;
     },
 
     set name(value) {
-      this._name = value;
+      _name = value;
     },
 
     createNewList,
     deleteList,
+    cutListItem,
+    pasteListItem,
 
     get todoLists() {
       return [..._todoLists];
@@ -32,4 +43,8 @@ function newProject(name) {
   };
 }
 
-export { newProject };
+function moveList(index, sourceProject, destinationProject) {
+  destinationProject.pasteListItem(sourceProject.cutListItem(index))
+}
+
+export { newProject, moveList };

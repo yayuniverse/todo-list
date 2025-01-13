@@ -23,12 +23,22 @@ function createTodoList({
     _list[property] = newValue;
   }
 
+  function markTodoAsDone() {
+    _list.state = "done";
+  }
+
+  function unmarkTodo() {
+    _list.state = "not done";
+  }
+
   return {
     get list() {
       return { ..._list };
     },
-    
+
     changeListProp,
+    markTodoAsDone,
+    unmarkTodo,
   };
 }
 
