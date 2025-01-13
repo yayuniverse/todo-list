@@ -1,25 +1,33 @@
 import { createTodoList } from "./todo-list";
 
 function newProject(name) {
-  const todoLists = [];
+  const _todoLists = [];
+  let _name = name;
 
   function createNewList(title, priority) {
     const newList = createTodoList(title, priority);
-    todoLists.push(newList);
+    _todoLists.push(newList);
   }
 
   function deleteList(index) {
-    // console.log(`${todoLists[index].title} deleted`)
-    todoLists.splice(index, 1);
+    // console.log(`${_todoLists[index].title} deleted`)
+    _todoLists.splice(index, 1);
   }
 
   return {
-    name,
     createNewList,
     deleteList,
 
     get todoLists() {
-      return [...todoLists];
+      return [..._todoLists];
+    },
+
+    get name() {
+      return _name;
+    },
+
+    set name(value) {
+      this._name = value;
     },
   };
 }

@@ -3,7 +3,6 @@ import { format } from "date-fns";
 function createTodoList({
   title,
   priority = "",
-  description = "",
   notes = "",
   dueDate = "",
   state = "not done",
@@ -16,15 +15,20 @@ function createTodoList({
 
   dueDate = format(new Date(yyyy, mm, d), "EEEE, d MMMM y");
 
+  //internal list state
+  const list = { title, priority, notes, dueDate, state };
 
-  
+  //modification function
+  function changeListProp(property, newValue) {
+    list[property] = newValue;
+  }
+
   return {
-    title,
-    priority,
-    description,
-    notes,
-    dueDate,
-    state,
+    get list() {
+      return { ...list };
+    },
+    
+    changeListProp,
   };
 }
 
