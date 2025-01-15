@@ -5,7 +5,7 @@ function newProject(name) {
   const _todoLists = [];
 
   function createList(title, priority) {
-    const newList = createTodoList( title, priority );
+    const newList = createTodoList(title, priority);
     _todoLists.push(newList);
   }
 
@@ -20,7 +20,11 @@ function newProject(name) {
   }
 
   function pasteListItem(list) {
-    _todoLists.push(list)
+    _todoLists.push(list);
+  }
+
+  function changeListProp(property, newValue, todoIndex) {
+    _todoLists[todoIndex].changeProp(property, newValue);
   }
 
   return {
@@ -36,6 +40,7 @@ function newProject(name) {
     deleteList,
     cutListItem,
     pasteListItem,
+    changeListProp,
 
     get todoLists() {
       return [..._todoLists];
@@ -44,7 +49,7 @@ function newProject(name) {
 }
 
 function moveList(index, sourceProject, destinationProject) {
-  destinationProject.pasteListItem(sourceProject.cutListItem(index))
+  destinationProject.pasteListItem(sourceProject.cutListItem(index));
 }
 
 export { newProject, moveList };

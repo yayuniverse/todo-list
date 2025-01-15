@@ -19,7 +19,7 @@ function createTodoList({
   const _list = { title, priority, notes, dueDate, state };
 
   //modification function
-  function changeListProp(property, newValue) {
+  function changeProp(property, newValue) {
     _list[property] = newValue;
   }
 
@@ -36,7 +36,7 @@ function createTodoList({
       return { ..._list };
     },
 
-    changeListProp,
+    changeProp,
     markTodoAsDone,
     unmarkTodo,
   };

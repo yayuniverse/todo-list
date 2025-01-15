@@ -1,5 +1,4 @@
 import { newProject, moveList } from "./project";
-import { createTodoList } from "./todo-list";
 
 function initializeApp() {
   const _projects = [];
@@ -11,12 +10,16 @@ function initializeApp() {
 
   createProject("Default Project");
 
-  function createList(projectIndex, title, priority) {
+  function createTodo(projectIndex, title, priority) {
     _projects[projectIndex].createList(title, priority);
   }
 
-  function deleteList(projectIndex, listIndex) {
+  function deleteTodo(projectIndex, listIndex) {
     _projects[projectIndex].deleteList(listIndex);
+  }
+
+  function changeTodoProp(property, value, projectIndex, todoIndex) {
+    _projects[projectIndex].changeListProp(property, value, todoIndex);
   }
 
   return {
@@ -25,7 +28,8 @@ function initializeApp() {
     },
 
     createProject,
-    createList,
-    deleteList,
+    createTodo,
+    deleteTodo,
+    changeTodoProp,
   };
 }
