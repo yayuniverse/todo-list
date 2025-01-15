@@ -4,8 +4,22 @@ function newProject(name) {
   let _name = name;
   const _todoLists = [];
 
-  function createList(title, priority) {
-    const newList = createTodoList(title, priority);
+  function createList({
+    title,
+    priority,
+    notes,
+    dueDate,
+    state,
+  } = {}) {
+    const newList = createTodoList(
+      ({
+        title,
+        priority,
+        notes,
+        dueDate,
+        state,
+      })
+    );
     _todoLists.push(newList);
   }
 

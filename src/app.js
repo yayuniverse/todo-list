@@ -10,8 +10,8 @@ function initializeApp() {
 
   createProject("Default Project");
 
-  function createTodo(projectIndex, title, priority) {
-    _projects[projectIndex].createList(title, priority);
+  function createTodo(projectIndex, { title, priority, notes, dueDate, state } = {}) {
+    _projects[projectIndex].createList({ title, priority, notes, dueDate, state });
   }
 
   function deleteTodo(projectIndex, listIndex) {
@@ -33,3 +33,5 @@ function initializeApp() {
     changeTodoProp,
   };
 }
+
+export { initializeApp };

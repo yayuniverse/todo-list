@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 
 function createTodoList({
-  title,
+  title = "new list",
   priority = "",
   notes = "",
   dueDate = "",
