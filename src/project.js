@@ -49,16 +49,16 @@ function newProject(name) {
     set name(value) {
       _name = value;
     },
+    
+    get todoLists() {
+      return [..._todoLists];
+    },
 
     createList,
     deleteList,
     cutListItem,
     pasteListItem,
     changeListProp,
-
-    get todoLists() {
-      return [..._todoLists];
-    },
   };
 }
 
