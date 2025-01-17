@@ -10,7 +10,7 @@ function createProjectTab(app, index) {
 }
 
 function displayProjects(app) {
-  app.projects.forEach((project, index) => createProjectTab(app, index))
+  app.projects.forEach((_, index) => createProjectTab(app, index))
 }
 
 export { displayProjects }
