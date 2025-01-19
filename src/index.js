@@ -7,23 +7,28 @@ import "./global.css";
 const app = initializeApp();
 
 app.createTodo(0, {
-  title: "Learn JavaScript",
-  priority: "high",
-  dueDate: "15/12/2023"
+  title: "Create first todo item",
+  dueDate: "15/02/2025"
 });
 
 app.createProject("Work Tasks");
 
 app.createTodo(1, {
   title: "Weekly Report",
-  priority: "high",
+  priority: "High",
   dueDate: "18/12/2023"
 });
 
 app.createTodo(1, {
   title: "Team Meeting",
-  priority: "medium", 
+  priority: "Medium", 
   dueDate: "19/12/2023"
+});
+
+app.createTodo(1, {
+  title: "Review Documentation",
+  priority: "Low",
+  dueDate: "20/12/2023"
 });
 
 displayProjects(app);

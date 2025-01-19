@@ -23,16 +23,26 @@ function createTodoItem(app, projectIndex, todoIndex) {
   addClass(todoText, "todo-text");
 
   const todoName = createElement("p");
-  todoName.textContent = app.projects[projectIndex].todoLists[todoIndex].list.title;
+  todoName.textContent =
+    app.projects[projectIndex].todoLists[todoIndex].list.title;
   const todoDueDate = createElement("p");
-  todoDueDate.textContent =
-    app.projects[projectIndex].todoLists[todoIndex].list.dueDate;
+  todoDueDate.textContent = `Due: ${app.projects[projectIndex].todoLists[todoIndex].list.dueDate}`;
+  const todoPriority = createElement("p");
+  todoPriority.textContent = `※ ${app.projects[projectIndex].todoLists[todoIndex].list.priority}`;
+
+  if (todoPriority.textContent === "※ High") {
+    addClass(todoPriority, "high-priority");
+  } else if (todoPriority.textContent === "※ Medium") {
+    addClass(todoPriority, "medium-priority");
+  } else if (todoPriority.textContent === "※ Low") {
+    addClass(todoPriority, "low-priority");
+  }
 
   const stateSwitchButton = createElement("button");
   addClass(stateSwitchButton, "state-btn");
   stateSwitchButton.textContent = "Done";
 
-  todoText.append(todoName, todoDueDate);
+  todoText.append(todoName, todoDueDate, todoPriority);
   todoItem.append(todoText, stateSwitchButton);
   todoList.append(todoItem);
 }

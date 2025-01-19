@@ -54,8 +54,10 @@ nav h1 {
 
 .todo-item {
   display: flex;
+  justify-content: space-between;
   gap: 360px;
-  align-items: center;
+  align-items: start;
+  width: 700px;
 }
 
 .todo-text > p:nth-of-type(1) {
@@ -67,12 +69,33 @@ nav h1 {
   margin-top: 4px;
 }
 
+.todo-text > p:nth-of-type(3) {
+  width: fit-content;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+.high-priority {
+  color: #e76f51;
+  font-weight: 500;
+}
+
+.medium-priority {
+  color: #f4a261;
+  font-weight: 500;
+}
+
+.low-priority {
+  color: #669bbc;
+  font-weight: 500;
+}
+
 .state-btn {
   padding: 8px 12px;
   border-radius: 4px;
   line-height: 1;
   height: fit-content;
-  background-color: #222;
-  color: #aaa;
+  background-color: #181818;
+  color: #909090;
   border: none;
 }
