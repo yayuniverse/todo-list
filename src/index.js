@@ -16,24 +16,27 @@ app.createProject("Work Tasks");
 app.createTodo(1, {
   title: "Weekly Report",
   priority: "High",
-  dueDate: "18/12/2023"
+  dueDate: "18/12/2023",
+  notes: "Include sales metrics and team performance stats"
 });
 
 app.createTodo(1, {
   title: "Team Meeting",
   priority: "Medium", 
-  dueDate: "19/12/2023"
+  dueDate: "19/12/2023",
+  notes: "Discuss project updates and deadlines"
 });
 
 app.createTodo(1, {
   title: "Review Documentation",
   priority: "Low",
-  dueDate: "20/12/2023"
+  dueDate: "20/12/2023",
+  notes: "Focus on API documentation and user guides"
 });
 
 displayProjects(app);
 
-displayTodoItems(app, 1)
+displayTodoItems(app, 1, 0)
 
 window.app = app;
 
