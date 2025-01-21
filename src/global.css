@@ -60,20 +60,31 @@ nav h1 {
   width: 700px;
 }
 
-.todo-text > p:nth-of-type(1) {
-  /* font-size: 16px; */
+.todo-text {
+  width: fit-content;
+}
+
+.todo-name {
   font-weight: 700;
 }
 
-.todo-text > p:nth-of-type(2) {
+.todo-due-date {
   margin-top: 4px;
 }
 
-.todo-text > p:nth-of-type(3) {
+.todo-priority {
   width: fit-content;
   margin-top: 4px;
   opacity: 0.8;
 }
+
+.todo-notes {
+  margin-top: 4px;
+}
+
+/* .todo-due-date-expanded {
+  margin-top: 8px;
+} */
 
 .high-priority {
   color: #e76f51;
