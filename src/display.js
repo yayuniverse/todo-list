@@ -63,10 +63,10 @@ function createTodoItem(app, projectIndex, todoIndex, size = "collapsed") {
   todoList.append(todoItem);
 }
 
-function displayTodoItems(app, projectIndex, todoIndex) {
+function displayTodoItems(app, projectIndex, expandedIndex) {
   const projectTodos = app.projects[projectIndex].todoLists;
   projectTodos.forEach((_, index) => {
-    if (index === todoIndex) {
+    if (index === expandedIndex) {
       createTodoItem(app, projectIndex, index, "expanded");
     } else {
       createTodoItem(app, projectIndex, index);
