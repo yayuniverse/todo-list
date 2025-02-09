@@ -3,9 +3,16 @@ import { createElement, addClass } from "./utilities";
 
 function createProjectTab(app, index) {
   const buttonGroup = document.querySelector(".btn-group");
+  
   const projectTab = createElement("button");
   addClass(projectTab, "project-tab");
-  projectTab.textContent = `📁 ${app.projects[index].name}`;
+  
+  const projectIcon = createElement("i");
+  addClass(projectIcon, "ph-duotone", "ph-folder")
+  
+  const projectName = document.createTextNode(`${app.projects[index].name}`);
+  projectTab.append(projectIcon, projectName);
+  
   buttonGroup.append(projectTab);
 }
 

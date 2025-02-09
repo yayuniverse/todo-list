@@ -17,10 +17,19 @@ nav {
 }
 
 nav h1 {
-  color: #aaa;
   font-size: 16px;
   font-weight: 600;
   margin-left: 12px;
+  color: #aaa;
+}
+
+.add-project {
+  padding: 8px 8px;
+  color: #aaa;
+  background-color: #222;
+  border-style: none;
+  border-radius: 4px;
+  margin: 8px 12px 12px;
 }
 
 .btn-group {
@@ -36,6 +45,9 @@ nav h1 {
   border: none;
   text-align: start;
   border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .project-tab:hover {
@@ -104,4 +116,13 @@ nav h1 {
   background-color: #181818;
   color: #909090;
   border: none;
+}
+
+.ph-folder {
+  font-size: 20px;
+  color: #aaaaaabf;
+}
+
+.ph-plus-circle {
+  font-size: 20px;
 }

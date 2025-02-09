@@ -1,6 +1,10 @@
 import { initializeApp } from "./app";
 import { displayProjects, displayTodoItems } from "./display";
 
+import "@phosphor-icons/web/duotone";
+import "@phosphor-icons/web/fill";
+import "@phosphor-icons/web/bold";
+import "@phosphor-icons/web/regular";
 import "./reset.css";
 import "./global.css";
 
