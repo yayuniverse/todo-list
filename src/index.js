@@ -40,7 +40,7 @@ app.createTodo(1, {
 
 displayProjects(app);
 
-displayTodoItems(app, 1, 1)
+displayTodoItems(app, 0)
 
 window.app = app;
 

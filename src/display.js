@@ -3,16 +3,22 @@ import { createElement, addClass } from "./utilities";
 
 function createProjectTab(app, index) {
   const buttonGroup = document.querySelector(".btn-group");
-  
+
   const projectTab = createElement("button");
   addClass(projectTab, "project-tab");
-  
+
   const projectIcon = createElement("i");
-  addClass(projectIcon, "ph-duotone", "ph-folder")
-  
+  addClass(projectIcon, "ph-duotone", "ph-folder");
+
+  if (index === 0) {
+    projectTab.style.cssText = "background-color: #1b1b1b;";
+    projectIcon.classList.replace("ph-folder", "ph-folder-open");
+    projectIcon.style.cssText = "color: #218380";
+  }
+
   const projectName = document.createTextNode(`${app.projects[index].name}`);
   projectTab.append(projectIcon, projectName);
-  
+
   buttonGroup.append(projectTab);
 }
 
@@ -39,7 +45,9 @@ function createTodoItem(app, projectIndex, todoIndex, size = "collapsed") {
   addClass(todoDueDate, "todo-due-date");
 
   const todoPriority = createElement("p");
-  todoPriority.textContent = `※ ${app.projects[projectIndex].todoLists[todoIndex].list.priority}`;
+  const priorityValue =
+    app.projects[projectIndex].todoLists[todoIndex].list.priority;
+  if (priorityValue) todoPriority.textContent = `※ ${priorityValue}`;
   addClass(todoPriority, "todo-priority");
 
   if (todoPriority.textContent === "※ High") {
@@ -70,7 +78,7 @@ function createTodoItem(app, projectIndex, todoIndex, size = "collapsed") {
   todoList.append(todoItem);
 }
 
-function displayTodoItems(app, projectIndex, expandedIndex) {
+function displayTodoItems(app, projectIndex, expandedIndex = "") {
   const projectTodos = app.projects[projectIndex].todoLists;
   projectTodos.forEach((_, index) => {
     if (index === expandedIndex) {
