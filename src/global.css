@@ -1,7 +1,7 @@
 body {
   display: grid;
   background-color: #111;
-  grid-template-columns: 1.2fr 8.8fr;
+  grid-template-columns: 1.5fr 8.5fr;
   height: 100vh;
   padding: 120px 160px;
 }
@@ -24,12 +24,20 @@ nav h1 {
 }
 
 .add-project {
-  padding: 8px 8px;
-  color: #aaa;
-  background-color: #222;
+  padding: 8px 12px;
+  color: #218380;
+  background-color: transparent;
   border-style: none;
-  border-radius: 4px;
-  margin: 8px 12px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  /* margin-bottom: 8px; */
+}
+
+.ph-plus {
+  font-size: 20px;
 }
 
 .btn-group {
@@ -47,7 +55,8 @@ nav h1 {
   border-radius: 6px;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  font-size: 14px;
 }
 
 .project-tab:hover {
