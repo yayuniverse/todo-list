@@ -23,23 +23,6 @@ nav h1 {
   color: #aaa;
 }
 
-.add-project {
-  padding: 8px 12px;
-  color: #218380;
-  background-color: transparent;
-  border-style: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  /* margin-bottom: 8px; */
-}
-
-.ph-plus {
-  font-size: 20px;
-}
-
 .btn-group {
   display: flex;
   flex-direction: column;
@@ -132,6 +115,3 @@ nav h1 {
   color: #aaaaaabf;
 }
 
-.ph-plus-circle {
-  font-size: 20px;
-}
