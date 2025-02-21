@@ -16,6 +16,8 @@ function createProjectTab(app, index) {
   }
 
   const projectName = document.createTextNode(`${app.projects[index].name}`);
+  
+  projectTab.dataset.projectIndex = index
   projectTab.append(projectIcon, projectName);
 
   buttonGroup.append(projectTab);
@@ -92,6 +94,7 @@ function createTodoItem(app, projectIndex, todoIndex, size = "collapsed") {
 }
 
 function displayTodoItems(app, projectIndex, expandedIndex = "") {
+  document.querySelector(".todo-list").innerHTML = "";
   const projectTodos = app.projects[projectIndex].todoLists;
   projectTodos.forEach((_, index) => {
     if (index === expandedIndex) {

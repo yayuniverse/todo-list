@@ -18,6 +18,8 @@ app.createTodo(0, {
   dueDate: "15/02/2025",
 });
 
+displayTodoItems(app, 0)
+
 app.createTodo(1, {
   title: "Weekly Report",
   priority: "High",
@@ -45,7 +47,7 @@ const allProjectTabs = document.querySelectorAll(".project-tab");
 
 function unstyleProjectTabs() {
   allProjectTabs.forEach((tab) => {
-    tab.classList.remove('active');
+    tab.classList.remove("active");
     const tabIcon = tab.querySelector("i");
     tabIcon.className = "";
     addClass(tabIcon, "ph-duotone", "ph-folder");
@@ -55,12 +57,12 @@ function unstyleProjectTabs() {
 allProjectTabs.forEach((tab) => {
   tab.addEventListener("click", () => {
     unstyleProjectTabs();
-    tab.classList.add('active');
+    tab.classList.add("active");
     const tabIcon = tab.querySelector("i");
     addClass(tabIcon, "ph-duotone", "ph-folder-open");
+    const tabProjectIndex = parseInt(tab.dataset.projectIndex);
+    displayTodoItems(app, tabProjectIndex);
   });
 });
-
-displayTodoItems(app, 0);
 
 window.app = app;
