@@ -11,9 +11,8 @@ function createProjectTab(app, index) {
   addClass(projectIcon, "ph-duotone", "ph-folder");
 
   if (index === 0) {
-    projectTab.style.cssText = "background-color: #1b1b1b;";
+    addClass(projectTab, "active");
     projectIcon.classList.replace("ph-folder", "ph-folder-open");
-    projectIcon.style.cssText = "color: #218380";
   }
 
   const projectName = document.createTextNode(`${app.projects[index].name}`);
@@ -26,24 +25,35 @@ function displayProjects(app) {
   app.projects.forEach((_, index) => createProjectTab(app, index));
 }
 
+// Creates a new todo item and displays it in the todo list
+// Parameters:
+// - app: contains all the projects and todos
+// - projectIndex: which project the todo belongs to
+// - todoIndex: which todo we're creating
+// - size: whether to show the todo in 'collapsed' or 'expanded' view
 function createTodoItem(app, projectIndex, todoIndex, size = "collapsed") {
   const todoList = document.querySelector(".todo-list");
 
+  // Create the main container for the todo item
   const todoItem = createElement("div");
   addClass(todoItem, "todo-item");
 
+  // Create the section that will hold all the todo's text content
   const todoText = createElement("div");
   addClass(todoText, "todo-text");
 
+  // Create and set the todo's title
   const todoName = createElement("p");
   todoName.textContent =
     app.projects[projectIndex].todoLists[todoIndex].list.title;
   addClass(todoName, "todo-name");
 
+  // Add the due date
   const todoDueDate = createElement("p");
   todoDueDate.textContent = `Due: ${app.projects[projectIndex].todoLists[todoIndex].list.dueDate}`;
   addClass(todoDueDate, "todo-due-date");
 
+  // Add and style the priority level (High, Medium, or Low)
   const todoPriority = createElement("p");
   const priorityValue =
     app.projects[projectIndex].todoLists[todoIndex].list.priority;
@@ -58,11 +68,12 @@ function createTodoItem(app, projectIndex, todoIndex, size = "collapsed") {
     addClass(todoPriority, "low-priority");
   }
 
+  // Add a button to mark the todo as done
   const stateSwitchButton = createElement("button");
   addClass(stateSwitchButton, "state-btn");
   stateSwitchButton.textContent = "Done";
 
-  // Add notes to todo item if expanded view is requested
+  // If we're in expanded view, show the todo's notes too
   if (size === "expanded") {
     const todoNotes = createElement("p");
     addClass(todoNotes, "todo-notes");
@@ -71,9 +82,11 @@ function createTodoItem(app, projectIndex, todoIndex, size = "collapsed") {
 
     todoText.append(todoName, todoNotes, todoDueDate, todoPriority);
   } else {
+    // In collapsed view, show everything except notes
     todoText.append(todoName, todoDueDate, todoPriority);
   }
 
+  // Put all the pieces together and add the todo to the list
   todoItem.append(todoText, stateSwitchButton);
   todoList.append(todoItem);
 }
@@ -88,9 +101,5 @@ function displayTodoItems(app, projectIndex, expandedIndex = "") {
     }
   });
 }
-
-// function createExpandedTodoItem(app, projectIndex, todoIndex) {
-//   createTodoItem(app, projectIndex, todoIndex);
-// }
 
 export { displayProjects, displayTodoItems };

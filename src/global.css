@@ -46,6 +46,18 @@ nav h1 {
   background-color: #1b1b1b;
 }
 
+.project-tab i {
+  color: #aaaaaabf;
+}
+
+.project-tab.active {
+  background-color: #1b1b1b;
+}
+
+.project-tab.active i {
+  color: #218380;
+}
+
 .active-tab {
   color: #e76f51;
 }
@@ -116,6 +128,4 @@ nav h1 {
 
 .ph-folder, .ph-folder-open {
   font-size: 20px;
-  color: #aaaaaabf;
 }
-
