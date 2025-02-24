@@ -52,7 +52,7 @@ function createTodoItem(app, projectIndex, todoIndex, size = "collapsed") {
 
   // Add the due date
   const todoDueDate = createElement("p");
-  todoDueDate.textContent = `Due: ${app.projects[projectIndex].todoLists[todoIndex].list.dueDate}`;
+  todoDueDate.textContent = `${app.projects[projectIndex].todoLists[todoIndex].list.dueDate}`;
   addClass(todoDueDate, "todo-due-date");
 
   // Add and style the priority level (High, Medium, or Low)
