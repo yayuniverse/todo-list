@@ -16,8 +16,8 @@ function createProjectTab(app, index) {
   }
 
   const projectName = document.createTextNode(`${app.projects[index].name}`);
-  
-  projectTab.dataset.projectIndex = index
+
+  projectTab.dataset.projectIndex = index;
   projectTab.append(projectIcon, projectName);
 
   buttonGroup.append(projectTab);
@@ -60,6 +60,7 @@ function createTodoItem(app, projectIndex, todoIndex, size = "collapsed") {
   const priorityValue =
     app.projects[projectIndex].todoLists[todoIndex].list.priority;
   if (priorityValue) todoPriority.textContent = `※ ${priorityValue}`;
+  else todoPriority.textContent = "※";
   addClass(todoPriority, "todo-priority");
 
   if (todoPriority.textContent === "※ High") {
@@ -69,6 +70,13 @@ function createTodoItem(app, projectIndex, todoIndex, size = "collapsed") {
   } else if (todoPriority.textContent === "※ Low") {
     addClass(todoPriority, "low-priority");
   }
+
+  const todoDueDatePlusPriority = createElement("span");
+  addClass(todoDueDatePlusPriority, "due-date-priority");
+  if (todoPriority.textContent === "※") {
+    addClass(todoDueDatePlusPriority, "no-priority");
+  }
+  todoDueDatePlusPriority.append(todoPriority, todoDueDate);
 
   // Add a button to mark the todo as done
   const stateSwitchButton = createElement("button");
@@ -82,10 +90,10 @@ function createTodoItem(app, projectIndex, todoIndex, size = "collapsed") {
     todoNotes.textContent =
       app.projects[projectIndex].todoLists[todoIndex].list.notes;
 
-    todoText.append(todoName, todoNotes, todoDueDate, todoPriority);
+    todoText.append(todoName, todoNotes, todoDueDatePlusPriority);
   } else {
     // In collapsed view, show everything except notes
-    todoText.append(todoName, todoDueDate, todoPriority);
+    todoText.append(todoName, todoDueDatePlusPriority);
   }
 
   // Put all the pieces together and add the todo to the list

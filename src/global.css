@@ -94,6 +94,15 @@ nav h1 {
   opacity: 0.8;
 }
 
+.due-date-priority {
+  display: flex;
+  gap: 12px;
+}
+
+.due-date-priority.no-priority {
+  gap: 4px;
+}
+
 .todo-notes {
   margin-top: 4px;
 }
