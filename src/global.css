@@ -96,7 +96,7 @@ nav h1 {
 
 .due-date-priority {
   display: flex;
-  gap: 12px;
+  gap: 8px;
 }
 
 .due-date-priority.no-priority {
