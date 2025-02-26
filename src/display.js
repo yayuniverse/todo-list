@@ -32,8 +32,7 @@ function displayProjects(app) {
 // - app: contains all the projects and todos
 // - projectIndex: which project the todo belongs to
 // - todoIndex: which todo we're creating
-// - size: whether to show the todo in 'collapsed' or 'expanded' view
-function createTodoItem(app, projectIndex, todoIndex, size = "collapsed") {
+function createTodoItem(app, projectIndex, todoIndex) {
   const todoList = document.querySelector(".todo-list");
 
   // Create the main container for the todo item
@@ -83,34 +82,24 @@ function createTodoItem(app, projectIndex, todoIndex, size = "collapsed") {
   addClass(stateSwitchButton, "state-btn");
   stateSwitchButton.textContent = "Done";
 
-  // If we're in expanded view, show the todo's notes too
-  if (size === "expanded") {
-    const todoNotes = createElement("p");
-    addClass(todoNotes, "todo-notes");
-    todoNotes.textContent =
-      app.projects[projectIndex].todoLists[todoIndex].list.notes;
-
-    todoText.append(todoName, todoNotes, todoDueDatePlusPriority);
-  } else {
-    // In collapsed view, show everything except notes
-    todoText.append(todoName, todoDueDatePlusPriority);
-  }
+  // Add all elements to the todo item
+  todoText.append(todoName, todoDueDatePlusPriority);
 
   // Put all the pieces together and add the todo to the list
   todoItem.append(todoText, stateSwitchButton);
   todoList.append(todoItem);
 }
 
-function displayTodoItems(app, projectIndex, expandedIndex = "") {
+function displayTodoItems(app, projectIndex) {
   document.querySelector(".todo-list").innerHTML = "";
   const projectTodos = app.projects[projectIndex].todoLists;
   projectTodos.forEach((_, index) => {
-    if (index === expandedIndex) {
-      createTodoItem(app, projectIndex, index, "expanded");
-    } else {
-      createTodoItem(app, projectIndex, index);
-    }
+    createTodoItem(app, projectIndex, index);
   });
 }
 
-export { displayProjects, displayTodoItems };
+function displayTodoDialog(app, projectIndex, todoIndex) {
+  
+}
+
+export { displayProjects, displayTodoItems, displayTodoDialog };
