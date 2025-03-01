@@ -2,7 +2,7 @@ import { createElement, addClass } from "./utilities";
 // import { initializeApp } from "./app";
 
 function createProjectTab(app, index) {
-  const buttonGroup = document.querySelector(".btn-group");
+  const tabGroup = document.querySelector(".tab-group");
 
   const projectTab = createElement("button");
   addClass(projectTab, "project-tab");
@@ -20,7 +20,7 @@ function createProjectTab(app, index) {
   projectTab.dataset.projectIndex = index;
   projectTab.append(projectIcon, projectName);
 
-  buttonGroup.append(projectTab);
+  tabGroup.append(projectTab);
 }
 
 function displayProjects(app) {

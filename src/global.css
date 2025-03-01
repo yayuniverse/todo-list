@@ -24,7 +24,7 @@ nav h1 {
   color: #aaa;
 }
 
-.btn-group {
+.tab-group {
   display: flex;
   flex-direction: column;
   gap: 4px;
