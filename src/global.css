@@ -158,14 +158,14 @@ dialog::backdrop {
 }
 
 .title-expanded {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   color: #eee;
 }
 
 .notes-expanded {
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   color: #bbb;
   line-height: 1.5;
   display: flex;
