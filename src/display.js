@@ -99,7 +99,41 @@ function displayTodoItems(app, projectIndex) {
 }
 
 function displayTodoDialog(app, projectIndex, todoIndex) {
+  const dialog = createElement("dialog")
   
+  const title = createElement("h2")
+  title.textContent = app.projects[projectIndex].todoLists[todoIndex].list.title;
+  
+  const dueDate = createElement("p");
+  dueDate.textContent = `Due: ${app.projects[projectIndex].todoLists[todoIndex].list.dueDate}`;
+  
+  const priority = createElement("p");
+  const priorityValue = app.projects[projectIndex].todoLists[todoIndex].list.priority;
+  priority.textContent = `Priority: ${priorityValue || "None"}`;
+  
+  if (priorityValue === "High") {
+    addClass(priority, "high-priority");
+  } else if (priorityValue === "Medium") {
+    addClass(priority, "medium-priority");
+  } else if (priorityValue === "Low") {
+    addClass(priority, "low-priority");
+  }
+  
+  const notes = createElement("p");
+  notes.textContent = app.projects[projectIndex].todoLists[todoIndex].list.notes || "No notes";
+  addClass(notes, "todo-notes");
+  
+  const state = createElement("p");
+  state.textContent = `Status: ${app.projects[projectIndex].todoLists[todoIndex].list.state}`;
+
+  const closeButton = createElement("button")
+  closeButton.textContent = "Close";
+  closeButton.addEventListener("click", () => {
+    dialog.close();
+  })
+  
+  dialog.append(title, dueDate, priority, notes, state, closeButton);
+  dialog.showModal()
 }
 
 export { displayProjects, displayTodoItems, displayTodoDialog };
