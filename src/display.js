@@ -103,36 +103,53 @@ function displayTodoDialog(app, projectIndex, todoIndex) {
   
   const title = createElement("h2")
   title.textContent = app.projects[projectIndex].todoLists[todoIndex].list.title;
-  
+  addClass(title, "title-expanded")
+
+  const notes = createElement("p");
+  notes.textContent = `${app.projects[projectIndex].todoLists[todoIndex].list.notes || "No notes"}`;
+  addClass(notes, "notes-expanded");
+
   const dueDate = createElement("p");
-  dueDate.textContent = `Due: ${app.projects[projectIndex].todoLists[todoIndex].list.dueDate}`;
-  
+  const dueDateIcon = createElement("i");
+  addClass(dueDateIcon, "ph-duotone", "ph-calendar");
+  dueDate.textContent = ` Due ${app.projects[projectIndex].todoLists[todoIndex].list.dueDate}`;
+  dueDate.prepend(dueDateIcon);
+  addClass(dueDate, "due-date-expanded")
+
   const priority = createElement("p");
   const priorityValue = app.projects[projectIndex].todoLists[todoIndex].list.priority;
-  priority.textContent = `Priority: ${priorityValue || "None"}`;
+  const priorityIcon = createElement("i");
+  addClass(priorityIcon, "ph-duotone", "ph-flag");
+  priority.textContent = ` ${priorityValue || "No"} priority`;
+  priority.prepend(priorityIcon);
+  addClass(priority, "priority-expanded")
   
   if (priorityValue === "High") {
     addClass(priority, "high-priority");
+    priorityIcon.classList.add("high-priority");
   } else if (priorityValue === "Medium") {
     addClass(priority, "medium-priority");
+    priorityIcon.classList.add("medium-priority");
   } else if (priorityValue === "Low") {
     addClass(priority, "low-priority");
+    priorityIcon.classList.add("low-priority");
   }
   
-  const notes = createElement("p");
-  notes.textContent = app.projects[projectIndex].todoLists[todoIndex].list.notes || "No notes";
-  addClass(notes, "todo-notes");
-  
   const state = createElement("p");
-  state.textContent = `Status: ${app.projects[projectIndex].todoLists[todoIndex].list.state}`;
-
+  const stateIcon = createElement("i");
+  addClass(stateIcon, "ph-duotone", "ph-check-circle");
+  state.textContent = ` ${app.projects[projectIndex].todoLists[todoIndex].list.state}`;
+  state.prepend(stateIcon);
+  addClass(state, "state-expanded")
+  
   const closeButton = createElement("button")
   closeButton.textContent = "Close";
   closeButton.addEventListener("click", () => {
     dialog.close();
   })
   
-  dialog.append(title, dueDate, priority, notes, state, closeButton);
+  dialog.append(title, notes, dueDate, priority, state, closeButton);
+  document.body.appendChild(dialog)
   dialog.showModal()
 }
 

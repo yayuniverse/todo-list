@@ -107,9 +107,6 @@ nav h1 {
   margin-top: 4px;
 }
 
-/* .todo-due-date-expanded {
-  margin-top: 8px;
-} */
 
 .high-priority {
   color: #e76f51;
@@ -139,3 +136,91 @@ nav h1 {
 .ph-folder, .ph-folder-open {
   font-size: 20px;
 }
+
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: 500px;
+  height: fit-content;
+  padding: 24px 32px;
+  padding-bottom: 40px;
+  background-color: #1b1b1b;
+  border-radius: 8px;
+  border: 1px solid #333;
+  color: #aaa;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.title-expanded {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #eee;
+}
+
+.notes-expanded {
+  margin-bottom: 24px;
+  color: #bbb;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.due-date-expanded {
+  color: #999;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.due-date-expanded i {
+  font-size: 22px;
+  color: #999;
+}
+
+.priority-expanded {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.priority-expanded i {
+  font-size: 22px;
+}
+
+.state-expanded {
+  color: #999;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.state-expanded i {
+  font-size: 22px;
+  color: #999;
+}
+
+dialog button {
+  padding: 8px 16px;
+  background-color: #218380;
+  color: #eee;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+dialog button:hover {
+  background-color: #26a29e;
+}
+
