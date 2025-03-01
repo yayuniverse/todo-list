@@ -136,4 +136,25 @@ function displayTodoDialog(app, projectIndex, todoIndex) {
   dialog.showModal()
 }
 
-export { displayProjects, displayTodoItems, displayTodoDialog };
+function unstyleProjectTabs(projectTabs) {
+  projectTabs.forEach((tab) => {
+    tab.classList.remove("active");
+    const tabIcon = tab.querySelector("i");
+    tabIcon.className = "";
+    addClass(tabIcon, "ph-duotone", "ph-folder");
+  });
+}
+
+function makeTabsInteractive(projectTabs, app) {
+  projectTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      unstyleProjectTabs(projectTabs);
+      tab.classList.add("active");
+      const tabIcon = tab.querySelector("i");
+      addClass(tabIcon, "ph-duotone", "ph-folder-open");
+      const tabProjectIndex = parseInt(tab.dataset.projectIndex);
+      displayTodoItems(app, tabProjectIndex);
+    });
+  });
+}
+export { displayProjects, displayTodoItems, displayTodoDialog, unstyleProjectTabs, makeTabsInteractive };

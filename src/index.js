@@ -1,5 +1,5 @@
 import { initializeApp } from "./app";
-import { displayProjects, displayTodoItems } from "./display";
+import { displayProjects, displayTodoItems, unstyleProjectTabs, makeTabsInteractive } from "./display";
 import { addClass } from "./utilities";
 
 import "@phosphor-icons/web/duotone";
@@ -45,24 +45,4 @@ displayProjects(app);
 
 const allProjectTabs = document.querySelectorAll(".project-tab");
 
-function unstyleProjectTabs() {
-  allProjectTabs.forEach((tab) => {
-    tab.classList.remove("active");
-    const tabIcon = tab.querySelector("i");
-    tabIcon.className = "";
-    addClass(tabIcon, "ph-duotone", "ph-folder");
-  });
-}
-
-allProjectTabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    unstyleProjectTabs();
-    tab.classList.add("active");
-    const tabIcon = tab.querySelector("i");
-    addClass(tabIcon, "ph-duotone", "ph-folder-open");
-    const tabProjectIndex = parseInt(tab.dataset.projectIndex);
-    displayTodoItems(app, tabProjectIndex);
-  });
-});
-
-window.app = app;
+makeTabsInteractive(allProjectTabs, app)
