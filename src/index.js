@@ -43,8 +43,6 @@ app.createTodo(1, {
 
 displayProjects(app);
 
-displayTodoDialog(app, 1, 1)
-
 const allProjectTabs = document.querySelectorAll(".project-tab");
 
 makeTabsInteractive(allProjectTabs, app)
