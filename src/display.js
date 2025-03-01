@@ -32,7 +32,7 @@ function displayProjects(app) {
 // - app: contains all the projects and todos
 // - projectIndex: which project the todo belongs to
 // - todoIndex: which todo we're creating
-function createTodoItem(app, projectIndex, todoIndex) {
+function displayTodoItem(app, projectIndex, todoIndex) {
   const todoList = document.querySelector(".todo-list");
 
   // Create the main container for the todo item
@@ -85,28 +85,39 @@ function createTodoItem(app, projectIndex, todoIndex) {
   // Add all elements to the todo item
   todoText.append(todoName, todoDueDatePlusPriority);
 
+  todoItem.dataset.projectIndex = projectIndex;
+  todoItem.dataset.todoIndex = todoIndex;
+
+  todoItem.addEventListener("click", () => {
+    displayTodoDialog(app, projectIndex, todoIndex);
+  });
+
   // Put all the pieces together and add the todo to the list
   todoItem.append(todoText, stateSwitchButton);
+
   todoList.append(todoItem);
 }
 
-function displayTodoItems(app, projectIndex) {
+function displayAllTodoItems(app, projectIndex) {
   document.querySelector(".todo-list").innerHTML = "";
   const projectTodos = app.projects[projectIndex].todoLists;
   projectTodos.forEach((_, index) => {
-    createTodoItem(app, projectIndex, index);
+    displayTodoItem(app, projectIndex, index);
   });
 }
 
 function displayTodoDialog(app, projectIndex, todoIndex) {
-  const dialog = createElement("dialog")
-  
-  const title = createElement("h2")
-  title.textContent = app.projects[projectIndex].todoLists[todoIndex].list.title;
-  addClass(title, "title-expanded")
+  const dialog = createElement("dialog");
+
+  const title = createElement("h2");
+  title.textContent =
+    app.projects[projectIndex].todoLists[todoIndex].list.title;
+  addClass(title, "title-expanded");
 
   const notes = createElement("p");
-  notes.textContent = `${app.projects[projectIndex].todoLists[todoIndex].list.notes || "No notes"}`;
+  notes.textContent = `${
+    app.projects[projectIndex].todoLists[todoIndex].list.notes || "No notes"
+  }`;
   addClass(notes, "notes-expanded");
 
   const dueDate = createElement("p");
@@ -114,16 +125,17 @@ function displayTodoDialog(app, projectIndex, todoIndex) {
   addClass(dueDateIcon, "ph-duotone", "ph-calendar");
   dueDate.textContent = ` Due ${app.projects[projectIndex].todoLists[todoIndex].list.dueDate}`;
   dueDate.prepend(dueDateIcon);
-  addClass(dueDate, "due-date-expanded")
+  addClass(dueDate, "due-date-expanded");
 
   const priority = createElement("p");
-  const priorityValue = app.projects[projectIndex].todoLists[todoIndex].list.priority;
+  const priorityValue =
+    app.projects[projectIndex].todoLists[todoIndex].list.priority;
   const priorityIcon = createElement("i");
   addClass(priorityIcon, "ph-duotone", "ph-flag");
   priority.textContent = ` ${priorityValue || "No"} priority`;
   priority.prepend(priorityIcon);
-  addClass(priority, "priority-expanded")
-  
+  addClass(priority, "priority-expanded");
+
   if (priorityValue === "High") {
     addClass(priority, "high-priority");
     priorityIcon.classList.add("high-priority");
@@ -134,23 +146,23 @@ function displayTodoDialog(app, projectIndex, todoIndex) {
     addClass(priority, "low-priority");
     priorityIcon.classList.add("low-priority");
   }
-  
+
   const state = createElement("p");
   const stateIcon = createElement("i");
   addClass(stateIcon, "ph-duotone", "ph-check-circle");
   state.textContent = ` ${app.projects[projectIndex].todoLists[todoIndex].list.state}`;
   state.prepend(stateIcon);
-  addClass(state, "state-expanded")
-  
-  const closeButton = createElement("button")
+  addClass(state, "state-expanded");
+
+  const closeButton = createElement("button");
   closeButton.textContent = "Close";
   closeButton.addEventListener("click", () => {
     dialog.close();
-  })
-  
+  });
+
   dialog.append(title, notes, dueDate, priority, state, closeButton);
-  document.body.appendChild(dialog)
-  dialog.showModal()
+  document.body.appendChild(dialog);
+  dialog.showModal();
 }
 
 function unstyleProjectTabs(projectTabs) {
@@ -170,8 +182,14 @@ function makeTabsInteractive(projectTabs, app) {
       const tabIcon = tab.querySelector("i");
       addClass(tabIcon, "ph-duotone", "ph-folder-open");
       const tabProjectIndex = parseInt(tab.dataset.projectIndex);
-      displayTodoItems(app, tabProjectIndex);
+      displayAllTodoItems(app, tabProjectIndex);
     });
   });
 }
-export { displayProjects, displayTodoItems, displayTodoDialog, unstyleProjectTabs, makeTabsInteractive };
+
+export {
+  displayProjects,
+  displayAllTodoItems,
+  displayTodoDialog,
+  makeTabsInteractive,
+};

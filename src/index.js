@@ -1,6 +1,6 @@
 import { initializeApp } from "./app";
 import { addClass } from "./utilities";
-import { displayProjects, displayTodoItems, displayTodoDialog, makeTabsInteractive } from "./display";
+import { displayProjects, displayAllTodoItems, displayTodoDialog, makeTabsInteractive } from "./display";
 
 import "@phosphor-icons/web/duotone";
 import "@phosphor-icons/web/fill";
@@ -18,7 +18,7 @@ app.createTodo(0, {
   dueDate: "15/02/2025",
 });
 
-displayTodoItems(app, 0)
+displayAllTodoItems(app, 0)
 
 app.createTodo(1, {
   title: "Weekly Report",
