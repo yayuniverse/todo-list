@@ -24,6 +24,7 @@ function createProjectTab(app, index) {
 }
 
 function displayProjects(app) {
+  document.querySelector(".tab-group").innerHTML = "";
   app.projects.forEach((_, index) => createProjectTab(app, index));
 }
 
@@ -165,6 +166,50 @@ function displayTodoDialog(app, projectIndex, todoIndex) {
   dialog.showModal();
 }
 
+function newProjectDialog(app) {
+  const dialog = createElement("dialog");
+
+  const title = createElement("h2");
+  title.textContent = "Create a new project";
+
+  const form = createElement("form");
+  form.id = "new-project-form";
+  form.method = "dialog";
+
+  const projectNameField = createElement("input");
+  projectNameField.type = "text";
+  projectNameField.name = "projectname";
+  projectNameField.required = true;
+
+  const buttonContainer = createElement("div");
+  addClass(buttonContainer, "dialog-buttons");
+
+  const cancelButton = createElement("button");
+  cancelButton.textContent = "Cancel";
+  cancelButton.type = "button";
+  cancelButton.addEventListener("click", () => {
+    dialog.close();
+  });
+
+  const submitButton = createElement("button");
+  submitButton.textContent = "Create project";
+  submitButton.type = "submit";
+
+  buttonContainer.append(cancelButton, submitButton);
+  form.append(projectNameField, buttonContainer);
+
+  form.addEventListener("submit", () => {
+    app.createProject(projectNameField.value);
+    displayProjects(app);
+  });
+
+  dialog.append(title, form);
+  document.body.appendChild(dialog);
+  dialog.showModal();
+
+  projectNameField.focus();
+}
+
 function unstyleProjectTabs(projectTabs) {
   projectTabs.forEach((tab) => {
     tab.classList.remove("active");
@@ -174,22 +219,25 @@ function unstyleProjectTabs(projectTabs) {
   });
 }
 
-function makeTabsInteractive(projectTabs, app) {
-  projectTabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      unstyleProjectTabs(projectTabs);
-      tab.classList.add("active");
-      const tabIcon = tab.querySelector("i");
-      addClass(tabIcon, "ph-duotone", "ph-folder-open");
-      const tabProjectIndex = parseInt(tab.dataset.projectIndex);
-      displayAllTodoItems(app, tabProjectIndex);
-    });
+function makeTabsInteractive(app) {
+  document.querySelector(".tab-group").addEventListener("click", (e) => {
+    const tab = e.target.closest(".project-tab");
+    if (!tab) return;
+
+    const allProjectTabs = document.querySelectorAll(".project-tab");
+    unstyleProjectTabs(allProjectTabs);
+
+    tab.classList.add("active");
+    const tabIcon = tab.querySelector("i");
+    addClass(tabIcon, "ph-duotone", "ph-folder-open");
+    const tabProjectIndex = parseInt(tab.dataset.projectIndex);
+    displayAllTodoItems(app, tabProjectIndex);
   });
 }
 
 export {
   displayProjects,
   displayAllTodoItems,
-  displayTodoDialog,
+  newProjectDialog,
   makeTabsInteractive,
 };

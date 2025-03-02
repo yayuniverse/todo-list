@@ -1,6 +1,6 @@
 import { initializeApp } from "./app";
 import { addClass } from "./utilities";
-import { displayProjects, displayAllTodoItems, displayTodoDialog, makeTabsInteractive } from "./display";
+import { displayProjects, displayAllTodoItems, newProjectDialog, makeTabsInteractive } from "./display";
 
 import "@phosphor-icons/web/duotone";
 import "@phosphor-icons/web/fill";
@@ -42,7 +42,8 @@ app.createTodo(1, {
 });
 
 displayProjects(app);
+makeTabsInteractive(app)
 
-const allProjectTabs = document.querySelectorAll(".project-tab");
-
-makeTabsInteractive(allProjectTabs, app)
+document.querySelector(".new-project-btn").addEventListener("click", () => {
+  newProjectDialog(app)
+})
