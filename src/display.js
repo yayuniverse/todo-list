@@ -176,10 +176,21 @@ function newProjectDialog(app) {
   form.id = "new-project-form";
   form.method = "dialog";
 
+  const inputContainer = createElement("div");
+  
+  const inputLabel = createElement("label");
+  inputLabel.textContent = "Project name";
+  addClass(inputLabel, "input-label");
+  inputLabel.htmlFor = "project-name-input";
+
   const projectNameField = createElement("input");
   projectNameField.type = "text";
   projectNameField.name = "projectname";
+  projectNameField.id = "project-name-input";
+  projectNameField.placeholder = "Enter project name...";
   projectNameField.required = true;
+  
+  inputContainer.append(inputLabel, projectNameField);
 
   const buttonContainer = createElement("div");
   addClass(buttonContainer, "dialog-buttons");
@@ -196,7 +207,7 @@ function newProjectDialog(app) {
   submitButton.type = "submit";
 
   buttonContainer.append(cancelButton, submitButton);
-  form.append(projectNameField, buttonContainer);
+  form.append(inputContainer, buttonContainer);
 
   form.addEventListener("submit", () => {
     app.createProject(projectNameField.value);
