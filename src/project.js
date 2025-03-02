@@ -28,14 +28,14 @@ function newProject(name) {
     _todoLists.splice(index, 1);
   }
 
-  function cutListItem(index) {
-    const removedTodoArray = _todoLists.splice(index, 1);
-    return removedTodoArray[0];
-  }
+  // function cutListItem(index) {
+  //   const removedTodoArray = _todoLists.splice(index, 1);
+  //   return removedTodoArray[0];
+  // }
 
-  function pasteListItem(list) {
-    _todoLists.push(list);
-  }
+  // function pasteListItem(list) {
+  //   _todoLists.push(list);
+  // }
 
   function changeListProp(property, newValue, todoIndex) {
     _todoLists[todoIndex].changeProp(property, newValue);
@@ -56,14 +56,14 @@ function newProject(name) {
 
     createList,
     deleteList,
-    cutListItem,
-    pasteListItem,
+    // cutListItem,
+    // pasteListItem,
     changeListProp,
   };
 }
 
-function moveList(index, sourceProject, destinationProject) {
-  destinationProject.pasteListItem(sourceProject.cutListItem(index));
-}
+// function moveList(index, sourceProject, destinationProject) {
+//   destinationProject.pasteListItem(sourceProject.cutListItem(index));
+// }
 
-export { newProject, moveList };
+export { newProject };

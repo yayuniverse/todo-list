@@ -1,4 +1,4 @@
-import { newProject, moveList } from "./project";
+import { newProject } from "./project";
 
 function initializeApp() {
   const _projects = [];
