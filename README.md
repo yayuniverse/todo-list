@@ -13,6 +13,6 @@ I'll probably never revisit this as it has served its purpose ❤️
 
 ## Screenshots
 
-![Todo List Details View](images/todolistdetails.png)
-![Project Creation Dialog](images/createproject.png)
-![Main Application View](images/mainpage.png)
+![Todo List Details View](src/images/todolistdetails.png)
+![Project Creation Dialog](src/images/createproject.png)
+![Main Application View](src/images/mainpage.png)
